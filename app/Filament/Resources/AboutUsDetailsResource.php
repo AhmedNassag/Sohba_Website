@@ -22,6 +22,7 @@ class AboutUsDetailsResource extends Resource
     protected static ?string $model = AboutUsDetails::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'About Us';
 
     public static function form(Form $form): Form
     {
@@ -45,6 +46,8 @@ class AboutUsDetailsResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('order')
+            ->defaultSort('id', 'asc')
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
@@ -112,7 +115,7 @@ class AboutUsDetailsResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return 1;
+        return 7;
     }
 
 }

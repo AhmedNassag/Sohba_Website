@@ -19,7 +19,8 @@ class ProgramBookingResource extends Resource
 {
     protected static ?string $model = ProgramBooking::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon  = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Programs';
 
     public static function form(Form $form): Form
     {
@@ -100,7 +101,7 @@ class ProgramBookingResource extends Resource
         ];
     }
 
-    
+
     public static function getPluralModelLabel(): string
     {
         return __('filament.Program_Bookings');
@@ -123,6 +124,6 @@ class ProgramBookingResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return 1;
+        return 3;
     }
 }

@@ -22,16 +22,20 @@ class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon  = 'heroicon-o-adjustments-vertical';
+    protected static ?string $navigationGroup = 'Categories';
 
     public static function form(Form $form): Form
     {
+        $record = $form->getRecord();
+        $recordId = $record ? $record->id : null;
         return $form
             ->schema([
                 TextInput::make('name')
                 ->label(__('filament.name'))
                     ->required()
                     ->maxLength(255)
+                    ->unique()
                     ->reactive() // Trigger event when input changes
                     ->afterStateUpdated(function (?string $state, callable $set) {
                         if ($state) {
@@ -40,11 +44,21 @@ class CategoryResource extends Resource
                             $slug = preg_replace('/[^\p{Arabic}\p{L}\p{N}\-]+/u', '', $slug); // Remove non-Arabic and non-alphanumeric characters, allow hyphens
                             $set('slug', $slug); // Set the generated slug
                         }
-                    }),
+                    })
+                    ->rules([
+                        Rule::unique('categories', 'name')
+                            ->ignore($recordId),
+                    ]),
 
                 Forms\Components\TextInput::make('slug')
                     ->label(__('filament.slug'))
-                    ->required(),
+                    ->unique()
+                    ->required()
+                    ->rules([
+                        Rule::unique('categories', 'slug')
+                            ->ignore($recordId),
+                    ]),
+
                 Select::make('parent_id')
                     ->label(__('filament.category'))
                     ->options(function () {
@@ -53,9 +67,9 @@ class CategoryResource extends Resource
                     ->nullable()
                     ->preload()      // Preloads the options for direct viewing
                     ->searchable(),   // Adds the searchable functionality
-                Forms\Components\TextInput::make('order')
-                    ->label(__('filament.order'))
-                    ->numeric(),
+                // Forms\Components\TextInput::make('order')
+                //     ->label(__('filament.order'))
+                //     ->numeric(),
             ]);
     }
 
@@ -65,25 +79,30 @@ class CategoryResource extends Resource
         ->reorderable('order')
         ->defaultSort('order', 'asc')
             ->columns([
-                Tables\Columns\TextColumn::make('parent.name')
-                    ->label(__('filament.category'))
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('order')
+                //     ->label(__('filament.order'))
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('filament.name'))
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('slug')
-                    ->label(__('filament.slug'))
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('order')
-                    ->label(__('filament.order'))
-                    ->numeric()
+                    ->label(__('filament.Slug'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('parent.name')
+                    ->label(__('filament.Category'))
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
+                    ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
+                    ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

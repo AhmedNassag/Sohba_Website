@@ -21,7 +21,8 @@ class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon  = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Contact Us';
 
     public static function form(Form $form): Form
     {
@@ -116,6 +117,6 @@ class TeamResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return 1;
+        return 8;
     }
 }

@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->foreignId('program_id')
-            ->references('id')->on('programs')
-            ->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('program_id')->references('id')->on('programs')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

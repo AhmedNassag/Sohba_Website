@@ -30,21 +30,32 @@ class ServiceResource extends Resource
 {
     protected static ?string $model = Service::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon  = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Services';
 
     public static function form(Form $form): Form
     {
+        $record = $form->getRecord();
+        $recordId = $record ? $record->id : null;
         return $form
             ->schema([
                 TextInput::make('name')
                     ->label(__('filament.name'))  // Arabic for "Name"
-                    ->required(),
-                TextInput::make('short_description')
+                    ->required()
+                    ->unique()
+                    ->rules([
+                        Rule::unique('services', 'name')
+                            ->ignore($recordId),
+                    ]),
+
+                Textarea::make('short_description')
                     ->label(__('filament.short_description'))  // Arabic for "Short Description"
                     ->required(),
+
                 Textarea::make('description')
                     ->label(__('filament.description'))  // Arabic for "Description"
                     ->required(),
+
                 SpatieMediaLibraryFileUpload::make('service_image')
                     ->collection('service_image') // Collection name defined in the model
                     ->label(__('filament.Service Image'))
@@ -57,14 +68,25 @@ class ServiceResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('order')
+            ->defaultSort('id', 'asc')
             ->columns([
                 TextColumn::make('name')->sortable()->searchable()->label(__('filament.name')),
                 TextColumn::make('short_description')->sortable()->searchable()->limit(25)->label(__('filament.short_description')),
                 TextColumn::make('description')->limit(50)->limit(50)->label(__('filament.description')),
-                TextColumn::make('created_at')->label('Created At')->dateTime()->label(__('filament.Created_at')),
                 SpatieMediaLibraryImageColumn::make('service_image')
                     ->label(__('filament.Service Image'))
                     ->collection('service_image'),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -117,5 +139,10 @@ class ServiceResource extends Resource
     public static function getModelLabel(): string
     {
         return __('filament.Service');
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        return 4;
     }
 }

@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('short_description')->nullable();
+            $table->text('short_description')->nullable();
             $table->text('description');
             $table->double('price');
-            $table->string('slug')->unique();
-            $table->foreignId('category_id')
-            ->references('id')->on('categories')
-            ->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('slug')->unique();
+            $table->foreignId('category_id')->references('id')->on('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

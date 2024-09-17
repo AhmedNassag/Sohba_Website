@@ -5,12 +5,8 @@
         <a href="#" class="bread-cramp mb-0">صحبة للسياحة</a>
     </div>
     <h2 class="vision">
-        {{@$porgram->name}}
+        {{ @$program->name }}
     </h2>
-    {{-- <div class="d-flex gap-2 mt-2">
-        <i class="bi bi-geo-alt startFrom fw-bolder"></i> <span class="startFrom"> المدينة المنورة </span> <span
-            class="startFrom"> &amp;</span> <span class="startFrom"> مكةالمكرمة </span>
-    </div> --}}
 </div>
 <div id="carouselExampleIndicators" class="carousel slide container pk-slider">
     <div class="carousel-indicators">

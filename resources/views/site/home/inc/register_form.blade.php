@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-5 col-md-8 col-md-12 position-relative">
             <div class="position-absolute pattern">
-                <img src="./assets/img/icons/pattern.png" alt="">
+                <img src="{{ asset('assets/img/icons/pattern.png') }}" alt="">
             </div>
 
             {{-- resources\views\site\home\inc\register_form.blade.php --}}

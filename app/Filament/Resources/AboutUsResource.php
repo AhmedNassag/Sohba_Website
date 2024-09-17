@@ -25,12 +25,13 @@ class AboutUsResource extends Resource
     protected static ?string $model = AboutUs::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'About Us';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Textarea::make('main_description')
+                Forms\Components\RichEditor::make('main_description')
                     ->label(__('filament.description'))
                     ->required()
                     ->maxLength(65535)
@@ -58,15 +59,18 @@ class AboutUsResource extends Resource
                     ->label(__('filament.main_image'))
                     ->required()
                     ->collection('about_us_image'),
-        ]);           
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('order')
+            ->defaultSort('id', 'asc')
             ->columns([
                 Tables\Columns\TextColumn::make('main_description')
                     ->label(__('filament.description'))
+                    ->getStateUsing(fn ($record) => strip_tags($record->main_description))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -109,7 +113,7 @@ class AboutUsResource extends Resource
             'edit' => Pages\EditAboutUs::route('/{record}/edit'),
         ];
     }
-    
+
     public static function getPluralModelLabel(): string
     {
         return __('filament.about_us');
@@ -132,6 +136,11 @@ class AboutUsResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return 1;
+        return 6;
+    }
+
+    public static function canCreate(): bool
+    {
+        return AboutUs::count() === 0;
     }
 }

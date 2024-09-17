@@ -19,7 +19,8 @@ class ServiceReservationResource extends Resource
 {
     protected static ?string $model = ServiceReservation::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon  = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Services';
 
     public static function form(Form $form): Form
     {
@@ -126,5 +127,10 @@ class ServiceReservationResource extends Resource
     public static function getModelLabel(): string
     {
         return __('filament.Service Reservation');
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        return 5;
     }
 }

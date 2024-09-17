@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->text('slug')->unique();
             $table->integer('order')->nullable();
-            $table->foreignId('parent_id')->nullable()
-            ->references('id')->on('categories')
-            ->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('parent_id')->nullable()->references('id')->on('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

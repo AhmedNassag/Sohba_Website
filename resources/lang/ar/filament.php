@@ -2,15 +2,15 @@
 
 return [
     //================== Main ==================
-
     'name'=>'الاسم',
     'title' => 'العنوان',
     'short_description' => 'وصف قصير',
     'description' => 'المحتوي',
-    'email' => 'بريد الكتروني',
+    'email' => 'بريد إلكتروني',
     'price' => 'السعر',
     'order' => 'الترتيب',
     'slug' => 'الوصف',
+    'Slug' => 'نبذة',
     'phone' => 'الهاتف',
     'job_title' => 'الوظيفة',
     'message' => 'رسالة',
@@ -18,52 +18,52 @@ return [
     'programes_images' => 'صور البرامج',
     'main_image' => 'الصور الرئيسية',
     'details' => 'التفاصيل',
-    'icon' => 'ايقونة',
-    'Created_at' => 'تاريخ الانشاء',
+    'icon' => 'أيقونة',
+    'Created_at' => 'تاريخ الإنشاء',
 
+    //=========================================
+    'Category'=>'القسم',
+    'Categories'=>'الأقسام',
+    'category'=>'القسم',
+    'categories'=>'الأقسام',
 
     //==========================================
     'programs' => "البرامج",
     'program' => "البرنامج",
-    'category'=>'القسم',
-    'categories'=>'الاقسام',
     'about_us' => 'من نحن',
     'about_us_details' => 'تفاصيل من نحن',
     'Program_Bookings' => 'حجز البرامج',
     'team' => 'فريق العمل',
-    'contact_us' => ' تواصل معنا',
+    'contact_us' => 'رسائل العملاء',
 
 
-     //settings
-     'Settings' => 'الاعدادات',
-     'Site_Name' => 'اسم الموقع',
-     'Hotline Number' => 'الخط الساخن',
-     'Logo' => 'الشعار',
-     'phone' => 'الموبيل',
-     'Favicon' => 'الصورة المفضلة',
-     'Hotline Image' => 'صورة الخط الساخن',
-     'Address' => 'العنوان',
-     'hotline' => 'الخط الساخن',
-     'Location Details' => 'تفاصيل المكان',
-     'Location name' => 'اسم المكان',
-     'Social Media' => 'وسائل التواصل الاجتماعي',
-     'Platform' => 'المنصة',
-     'URL' => 'الرابط',
-     'Icon' => 'الايقونه',
-     'Favicon' => 'الصورة المفضله',
-     'Media' => 'الوسائط',
-     'Basic Information' => 'معلومات اساسية',
-     'whatsapp' => 'واتس اب',
+    //settings
+    'Settings' => 'الإعدادات',
+    'Site_Name' => 'اسم الموقع',
+    'Hotline Number' => 'الخط الساخن',
+    'Logo' => 'الشعار',
+    'phone' => 'الموبايل',
+    'Favicon' => 'الصورة المفضلة',
+    'Hotline Image' => 'صورة الخط الساخن',
+    'Address' => 'العنوان',
+    'hotline' => 'الخط الساخن',
+    'Location Details' => 'تفاصيل المكان',
+    'Location name' => 'اسم المكان',
+    'Social Media' => 'وسائل التواصل الإجتماعي',
+    'Platform' => 'المنصة',
+    'URL' => 'الرابط',
+    'Icon' => 'الأيقونة',
+    'Favicon' => 'الصورة المفضلة',
+    'Media' => 'الوسائط',
+    'Basic Information' => 'معلومات أساسية',
+    'whatsapp' => 'واتس اب',
 
-     //Service
-     'Service Reservation' => 'حجز خدمة',
-     'Services Reservation' => 'حجز خدمات',
-     'Mobile' => 'الموبيل',
-     'Service Image' => 'صورة الخدمة',
-     'Services' => 'الخدمات',
-     'Service' => 'الخدمة',
-
-
-    
+    //Service
+    'Service Reservation' => 'حجز خدمة',
+    'Services Reservation' => 'حجز خدمات',
+    'Mobile' => 'الموبايل',
+    'Service Image' => 'صورة الخدمة',
+    'Services' => 'الخدمات',
+    'Service' => 'الخدمة',
 
 ];

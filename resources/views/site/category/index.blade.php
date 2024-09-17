@@ -21,34 +21,29 @@
                             aria-labelledby="pills-profile-tab" data-wow-delay="0.1s"
                             style="visibility: visible; animation-delay: 0.1s; animation-name: zoomIn;">
                             <div class="tour_container" style="height: fit-content">
-                                <div class="img_container">
-                                    <a href="{{route('categoryDetails.index', $program->slug)}}">
+                                <a href="{{route('categoryDetails.index', $program->slug)}}" style="color: #000">
+                                    <div class="img_container">
                                         @foreach($program->getMedia('program_main_image') as $media)
                                             <img src="{{ $media->getUrl() }}" alt="Program Image">
                                         @endforeach
-
-                                    </a>
-                                </div>
-                                <div class="tour_title">
-                                    <div class="ct-tit-ct mb-2">
-                                        <h3 class="cat-in-card px-3 py-">{{$category->name}}</h3>
                                     </div>
-                                    <h2 class="card-title">
-                                        {{$program->name}}
-                                    </h2>
-                                    <p class="card-desc">{{$program->short_description}}
-                                    </p>
-                                    <div class="row">
-
-                                        <div class=" d-flex align-items-center gap-2 justify-content-end w-100">
-
-                                            <p class="mb-0 startFrom">يبدأ من</p>
-                                            <h2 class="prices fw-bolder">{{$program->price}}<span class="unit fw-lighter">ج.م</span>
-                                            </h2>
+                                    <div class="tour_title">
+                                        <div class="ct-tit-ct mb-2">
+                                            <h3 class="cat-in-card px-3 py-">{{$category->name}}</h3>
+                                        </div>
+                                        <h2 class="card-title">
+                                            {{$program->name}}
+                                        </h2>
+                                        <p class="card-desc">{!! $program->short_description !!}</p>
+                                        <div class="row">
+                                            <div class=" d-flex align-items-center gap-2 justify-content-end w-100">
+                                                <p class="mb-0 startFrom">يبدأ من</p>
+                                                <h2 class="prices fw-bolder">{{$program->price}}<span class="unit fw-lighter">ج.م</span>
+                                                </h2>
+                                            </div>
                                         </div>
                                     </div>
-
-                                </div>
+                                </a>
                             </div>
                             <!-- End box tour -->
                         </div>
@@ -58,15 +53,8 @@
             </div>
         </div>
         <!-- cards End -->
-        <!-- <div class="d-flex justify-content-center mb-3">
-                <a href="#" class="show-more px-lg-3 px-2 ">
-                    <p class="mb-0"> اكتشف المزيد
-                    </p>
-                    <img class="mt-" src="./assets/img/icons/left.svg" alt="">
-                </a>
-            </div> -->
 
-        <div class="main-divider  container mx-auto "></div>
+        <div class="main-divider container mx-auto "></div>
     </section>
     <!--~--------------- Discover End -->
 @endsection

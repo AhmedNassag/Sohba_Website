@@ -4,6 +4,7 @@
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         // Initialize the intlTelInput instances
@@ -67,6 +68,30 @@
     <!-- Template Javascript -->
     <script src="script.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (session('success'))
+                Swal.fire({
+                    toast: true, // Enables toast notifications
+                    position: 'top-end', // Position in the top right
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    showConfirmButton: false, // No need for a confirm button
+                    timer: 3000, // Disappear after 3 seconds
+                    timerProgressBar: true, // Show a progress bar for the timer
+                    background: '#fefefe', // Background color of the toast
+                    color: '#333', // Text color
+                    customClass: {
+                        container: 'my-toast-container',
+                    },
+                });
+            @endif
+        });
+    </script>
+
+
 
     @yield('js')
 
