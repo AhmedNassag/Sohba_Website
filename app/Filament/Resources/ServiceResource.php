@@ -7,6 +7,7 @@ use Filament\Tables;
 use App\Models\Service;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Validation\Rule;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Actions\EditAction;
@@ -35,32 +36,26 @@ class ServiceResource extends Resource
 
     public static function form(Form $form): Form
     {
-        $record = $form->getRecord();
-        $recordId = $record ? $record->id : null;
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label(__('filament.name'))  // Arabic for "Name"
+                    ->label(__('filament.name'))
                     ->required()
-                    ->unique()
-                    ->rules([
-                        Rule::unique('services', 'name')
-                            ->ignore($recordId),
-                    ]),
+                    ->unique(ignoreRecord: true),
 
                 Textarea::make('short_description')
-                    ->label(__('filament.short_description'))  // Arabic for "Short Description"
+                    ->label(__('filament.short_description'))
                     ->required(),
 
                 Textarea::make('description')
-                    ->label(__('filament.description'))  // Arabic for "Description"
+                    ->label(__('filament.description'))
                     ->required(),
 
                 SpatieMediaLibraryFileUpload::make('service_image')
-                    ->collection('service_image') // Collection name defined in the model
+                    ->collection('service_image')
                     ->label(__('filament.Service Image'))
-                    ->image() // Only allow image files
-                    ->required(), // Make it required if necessary
+                    ->image()
+                    ->required(),
 
             ]);
     }

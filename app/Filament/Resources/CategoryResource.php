@@ -7,6 +7,7 @@ use Filament\Tables;
 use App\Models\Category;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Validation\Rule;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\EditAction;
@@ -35,8 +36,9 @@ class CategoryResource extends Resource
                 ->label(__('filament.name'))
                     ->required()
                     ->maxLength(255)
-                    ->unique()
-                    ->reactive() // Trigger event when input changes
+                    ->unique(ignoreRecord: true)
+                    ->reactive()
+                    ->live(onBlur:true)
                     ->afterStateUpdated(function (?string $state, callable $set) {
                         if ($state) {
                             // Replace spaces with hyphens, but keep Arabic characters intact
@@ -44,11 +46,7 @@ class CategoryResource extends Resource
                             $slug = preg_replace('/[^\p{Arabic}\p{L}\p{N}\-]+/u', '', $slug); // Remove non-Arabic and non-alphanumeric characters, allow hyphens
                             $set('slug', $slug); // Set the generated slug
                         }
-                    })
-                    ->rules([
-                        Rule::unique('categories', 'name')
-                            ->ignore($recordId),
-                    ]),
+                    }),
 
                 Forms\Components\TextInput::make('slug')
                     ->label(__('filament.slug'))

@@ -118,13 +118,13 @@ input:focus {
         text-align: right;
         color: #000;
     }
-.nav-hot-line
-{
-    /* height: 30px; */
-    margin-top: 10px;
-    width: 180px !important;
-    /* padding: 0px !important; */
-}
+
+    .nav-hot-line {
+        /* height: 30px; */
+        margin-top: 10px;
+        width: 180px !important;
+        /* padding: 0px !important; */
+    }
 }
 
 
@@ -1176,6 +1176,19 @@ summary {
 .serv-desc7:active,
 .serv-desc8:active {
     opacity: 100;
+}
+
+.service-title {
+    font-family: 'bold';
+    font-size: 40px;
+    font-weight: 700;
+    text-align: start;
+    background: linear-gradient(270.07deg, #C92D2A -41.71%, #BF2825 -18.85%, #E73D3A 74.54%, #E95656 115.2%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+
 }
 
 a.btn_1,

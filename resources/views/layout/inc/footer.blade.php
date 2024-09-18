@@ -2,7 +2,7 @@
     <div class="foot-inside container-xxl mx-auto">
         <div class="d-flex row px-lg-3 px-0 justify-content-between align-items-center mt-3 contact-footer">
             <div class="col-6 col-lg-3"> <img class=" logo" src="./assets/img/logos/logo.png" alt=""> </div>
-            <a class="hot-line col-6 col-lg-3 d-flex align-items-center justify-content-lg-center" href="tel:01222218575" class="">
+            <a class="hot-line col-6 col-lg-3 d-flex align-items-center justify-content-lg-center" href="tel:{{ @$settings->hotline }}" class="">
                 <img src="{{ @$settings->hotline_img }}" alt="">
             </a>
         </div>
@@ -14,7 +14,7 @@
                         تواصـل معنـا!
                     </h3>
                     <h3 class="vision">
-                        اتصل على ارقامنا للحجز والاستفسار
+                        اتصل على أرقامنا للحجز والإستفسار
                     </h3>
                     <div class="d-lg-flex gap-2">
                         <a href="{{ @$settings->facebook_link }}" target="_blank">
@@ -57,7 +57,7 @@
                             </div>
                             <div class="d-flex gap-2">
                                 <div>
-                                    <img src="{{asset('assets/img/icons/whats.png') }}" alt="">                                                                                                                                                                     
+                                    <img src="{{asset('assets/img/icons/whats.png') }}" alt="">
                                 </div>
                                 <p class="foot-desc"> {{ $one['whatsapp'] }}</p>
                             </div>
@@ -70,9 +70,7 @@
         </div>
         <div class="container-xxl my-3 divider"></div>
         <div class="copy-right">
-            <p>Copyright © 2024 SOHBA Tours. All Right Reserved. Powered By <a href="https://www.mv-is.com/en"
-                    target="_blank">Master Vision Integerated Solutions</a> </p>
-
+            <p>Copyright © 2024 SOHBA Tours. All Right Reserved. Powered By <a href="https://www.mv-is.com/en" target="_blank">Master Vision Integerated Solutions</a> </p>
         </div>
     </div>
 </footer>

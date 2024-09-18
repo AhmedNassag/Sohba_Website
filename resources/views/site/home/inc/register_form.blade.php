@@ -31,22 +31,32 @@
                         </label>
                     </div>
                     <div class="d-flex flex-column gap-3 phone-input-group">
-                        <input type="text" class="input-form-name  w-100" name="" id="" placeholder="الاسم">
-                        <input type="text" class="input-form phone-1 w-100" name="primaryPhone" id="mobile"
-                            placeholder="رقم الهاتف">
-                        <input type="text" class="input-form phone-1 w-100" name="secondaryPhone"
-                            placeholder="رقم هاتف آخر" id="mobile2">
+                        <!-- name -->
+                        <input type="text" class="input-form-name  w-100" name="name" id="" placeholder="الاسم">
 
-                        <input type="hidden" class="input-form phone-1" name="primaryPhoneWithCode">
+                        <!-- mobile2 -->
+                        <input type="text" class="input-form phone-1 w-100" name="mobile" id="mobile" placeholder="رقم الهاتف">
+
+                        <!-- mobile_key -->
+                        <input type="hidden" class="input-form phone-1" name="mobile2">
+
+                        <!-- mobil2 -->
+                        <input type="text" class="input-form phone-1 w-100" name="secondaryPhone" placeholder="رقم هاتف آخر" id="mobile2">
+
+                        <!-- mobile2_key -->
                         <input type="hidden" name="secondaryPhoneWithCode" id="secondaryPhoneWithCode">
+
+                        <!-- country_id -->
                         <select class="input-form custom-select" name="" id="mySelect">
-                            <option class="option" value="">المدينة</option>
+                            <option class="option" value="">الدولة</option>
                             <option class="option" value="">المستوى</option>
                             <option class="option" value="">المستوى</option>
                             <option class="option" value="">المستوى</option>
                         </select>
+
+                        <!-- city_id -->
                         <select class="input-form custom-select" name="" id="mySelect">
-                            <option class="option" value="">المستوى</option>
+                            <option class="option" value="">المدينة</option>
                             <option class="option" value="">المستوى</option>
                             <option class="option" value="">المستوى</option>
                             <option class="option" value="">المستوى</option>
